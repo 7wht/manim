@@ -35,6 +35,15 @@ class scene1(MovingCameraScene):
                 "stroke_opacity": 0.3
             }
         )
+        gridf = NumberPlane(
+            x_range=[-30, 30, 0.1],
+            y_range=[-30, 30, 0.1],
+            background_line_style={
+                "stroke_color": GREY,
+                "stroke_width": 1,
+                "stroke_opacity": 0.1
+            }
+        )
 
         eqn = Text("y = 0.2x²", font_size = 40, color=BLUE)
         eqn.move_to([5,1,0]) # type: ignore
@@ -96,7 +105,7 @@ class scene1(MovingCameraScene):
         self.play(Create(g2_slow), run_time = 4)
         self.add(g2)
 
-        self.play(FadeIn( grid), run_time=2, Animation=linear)
+        self.play(FadeIn(grid), FadeIn(gridf), run_time=2, Animation=linear)
         self.wait(2)
 
         self.play(Create(intersecth))
